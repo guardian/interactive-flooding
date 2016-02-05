@@ -8,10 +8,10 @@ for fn in sys.argv[1:]:
         meta = json.loads(soup.find('div', class_='json').text)
         classification = json.loads(soup.find('div', class_='json_classification').text)
 
-        with open('data/meta/%s.json' % meta['id'], 'w') as f:
+        with open('data/waterbodies/meta/%s.json' % meta['id'], 'w') as f:
             json.dump(meta, f)
 
-        with open('data/classifications/%s.json' % meta['id'], 'w') as f:
+        with open('data/waterbodies/classifications/%s.json' % meta['id'], 'w') as f:
             json.dump(classification, f)
     except AttributeError:
         print >> sys.stderr, fn
