@@ -80,7 +80,7 @@ ALC available from http://www.gis.naturalengland.org.uk/pubs/gis/GIS_register.as
 ogr2ogr -t_srs EPSG:27700 -s_srs EPSG:27700 magalc_srs.shp maglac.shp
 ```
 
-# Analaysis
+# Analysis
 
 To find out what the break down of tree cover and agricultural classification is for each waterbody, we need a way of testing the overlap between the various shapefiles. Because they are so large, it seems easier to rasterize the files and we can use a large enough resolution that the error margin will be small.
 
@@ -89,7 +89,7 @@ To find out what the break down of tree cover and agricultural classification is
 Rasterize everything using the same extents, dimensions and projection.
 
 - Extents: `(134150, 11500) (655850, 657700)`
-- Dimensions: `(5127, 6462)`
+- Dimensions: `(5217, 6462)`
 - Projection: `EPSG:27700`
 
 This means each pixel represents a 100m<sup>2</sup> area. 
