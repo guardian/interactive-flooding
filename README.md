@@ -49,11 +49,13 @@ e.g. http://environment.data.gov.uk/catchment-planning/WaterBody/GB104026066800
 
 8. Canal shape files do not seem to be available on geostore, so need to be done manually
    1. Download the raw shapes
+      
       ```
       cd data/waterbodies
       wget -xi ../../canal-urls.txt
       ```
    2. Convert to GeoJSON
+      
       ```bash
       mkdir data/waterbodies/canals
       find data/waterbodies/environment.data.gov.uk/ -name '*.gml' |
@@ -62,6 +64,7 @@ e.g. http://environment.data.gov.uk/catchment-planning/WaterBody/GB104026066800
           done
       ```
    3. Combine into one GeoJSON file, I used https://github.com/mapbox/geojson-merge
+      
       ```bash
       geojson-merge data/waterbodies/canals/*.json > data/waterbodies/canals.json
       ```
@@ -97,7 +100,9 @@ Options for all `gdal_rasterize` commands are thus:
 ```
 
 Rasterized TIFFs at this size are ~33Mb, so convert them to PNGs. Steps are:
+
 1. ALC is easy to rasterize
+   
    ```
    gdal_rasterize -a REF_CODE -l magalc_srs magalc_srs.shp ALC.tiff
    convert ALC.tiff ALC.png
@@ -109,6 +114,7 @@ Rasterized TIFFs at this size are ~33Mb, so convert them to PNGs. Steps are:
    convert NFI.tiff
    ```
 3. Create a mask for each waterbody.
+   
    ```
    gdal_rasterize -burn 1 -where 'EA_WB_ID="id"' -l all all.shp out.tiff
    convert out.tiff data/waterbodies/raster/id.png
