@@ -22,6 +22,7 @@ a {
 .flood-map {
     width: 500px;
     height: 700px;
+    float: left;
 }
 
 .flood-map__wb {
@@ -30,10 +31,45 @@ a {
     fill: white;
 
     &.is-upstream {
-        fill: blue;
+        fill: #4bc6df;
     }
 
     &.is-downstream {
-        fill: green;
+        fill: #aad801;
     }
+}
+
+.flood-stats {
+    overflow: hidden;
+}
+
+.flood-chart {
+    @include fs-textSans(2);
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+.flood-series {
+    margin-left: 90px;
+    position: relative;
+    height: 20px;
+
+    & > span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.flood-series__name {
+    position: absolute;
+    right: 100%;
+    margin-right: 5px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.flood-series__bar {
+    height: 10px;
+    background-color: #005689;
 }

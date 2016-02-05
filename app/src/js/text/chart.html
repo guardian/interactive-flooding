@@ -1,0 +1,11 @@
+<ul class="flood-chart">
+    {{~it.series :series}}
+        <li class="flood-series">
+            <span class="flood-series__name">
+                {{=series.name}}
+                ({{=(series.value / it.total * 100).toFixed(1)}}%)
+            </span>
+            <span class="flood-series__bar" style="width: {{=series.value / it.total * 100}}%"></span>
+        </li>
+    {{~}}
+</ul>
