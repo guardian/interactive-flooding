@@ -103,6 +103,7 @@ Rasterized TIFFs at this size are ~33Mb, so convert them to PNGs. Steps are:
    convert ALC.tiff ALC.png
    ```
 2. NFI is hard. The shapefile has no numeric properties which represent the classification (`IFT_IOA`), and as far as I can tell `gdal_rasterize` isn't capable of mapping string properties to numbers, so you need to do it manually. I created a new field called `IFT_IOA_NO`, then populated it with a mapping defined in `NFI-map.csv`
+   
    ```
    gdal_rasterize -a IFT_IOA_NO -l NATIONAL_FOREST_INVENTORY_GB NATIONAL_FOREST_INVENTORY_GB.shp NFI.tiff
    convert NFI.tiff
